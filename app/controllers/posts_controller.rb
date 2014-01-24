@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+ 
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+ 
+  def index
+    @posts = Post.all
+  end
+
   def new
   end
   
@@ -33,7 +40,8 @@ end
   
   def index
   @posts = Post.all
-  end
+end
+  
   def new
   @post = Post.new
 end
